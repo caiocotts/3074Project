@@ -26,11 +26,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    _3074ProjectTheme {
-//        Details()
-//    }
-//}
