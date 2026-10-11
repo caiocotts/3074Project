@@ -34,7 +34,6 @@ enum class NavRoutes(
     SEARCH("search", "Search", Icons.Default.Search),
     CREATE("create", "Create", Icons.Default.Add),
     DETAILS("details", "Details", Icons.Default.List),
-    EDIT("edit", "Edit", Icons.Default.Edit),
     DIRECTIONS("directions", "Directions", Icons.Default.Map)
 }
 
@@ -81,9 +80,6 @@ fun Nav(modifier: Modifier = Modifier){
             }
             composable(NavRoutes.DETAILS.route){
                 DetailsScreen()
-            }
-            composable(NavRoutes.EDIT.route){
-                Edit()
             }
             composable(NavRoutes.DIRECTIONS.route){
                 DirectionListScreen()

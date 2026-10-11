@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import ca.georgebrown.keags.a3074project.screens.SearchScreen
-import ca.georgebrown.keags.a3074project.screens.Edit
 import ca.georgebrown.keags.a3074project.screens.DetailsScreen
 import ca.georgebrown.keags.a3074project.screens.Nav
 import ca.georgebrown.keags.a3074project.ui.theme._3074ProjectTheme
