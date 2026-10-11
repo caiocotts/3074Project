@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,18 +25,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Preview(showBackground = true)
 @Composable
-fun Details(modifier: Modifier = Modifier) {
-    var search by rememberSaveable { mutableStateOf("") }
-
+fun DetailsScreen(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Top,
-    ){
+    ) {
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .height(150.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -49,37 +51,27 @@ fun Details(modifier: Modifier = Modifier) {
             )
         }
 
+        // Details section: ONE column, no fixed height
         Column(
-            modifier = Modifier.padding(40.dp,0.dp, 40.dp, 16.dp)
-                .fillMaxWidth()
-                .height(300.dp),
+            modifier = Modifier
+                .padding(40.dp, 0.dp, 40.dp, 16.dp)
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.SpaceEvenly,
+            verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
-
-            Column() {
-                Text(
-                    text="Location: "
-                )
-
-                Text(
-                    text="Rating: "
-                )
-
-                Text(
-                    text="Directions: "
-                )
+            Column {
+                Text(text = "Location: ")
+                Text(text = "Rating: ")
+                Text(text = "Directions: ")
             }
 
             Text(
-                text="Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore " +
+                text = "Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore " +
                         "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip " +
                         "ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat " +
                         "nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim " +
                         "id est laborum"
             )
-
         }
     }
 }
-

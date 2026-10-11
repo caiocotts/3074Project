@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import ca.georgebrown.keags.a3074project.screens.DetailsScreen
 import ca.georgebrown.keags.a3074project.screens.SearchScreen
 import ca.georgebrown.keags.a3074project.ui.theme._3074ProjectTheme
 
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             _3074ProjectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchScreen(
+                    DetailsScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
