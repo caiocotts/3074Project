@@ -35,15 +35,12 @@ fun DirectionListScreen(modifier: Modifier = Modifier) {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Top Title
         Text(
             text = "Direction List",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-
-        // Outlined Header Box ("Direction")
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,7 +61,6 @@ fun DirectionListScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Direction Steps List
         Column(
             modifier = Modifier
                 .fillMaxWidth()
