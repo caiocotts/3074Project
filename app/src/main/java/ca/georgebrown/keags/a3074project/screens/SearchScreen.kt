@@ -1,51 +1,63 @@
 package ca.georgebrown.keags.a3074project.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import ca.georgebrown.keags.a3074project.components.RestaurantCard
+import ca.georgebrown.keags.a3074project.model.sampleRestaurants
 
 @Composable
 fun SearchScreen(modifier: Modifier = Modifier) {
     var search by rememberSaveable { mutableStateOf("") }
+
+    val filteredRestaurants = remember(search) {
+        if (search.isBlank()) {
+            sampleRestaurants
+        } else {
+            sampleRestaurants.filter { restaurant ->
+                restaurant.name.contains(search, ignoreCase = true) ||
+                        restaurant.location.contains(search, ignoreCase = true)
+            }
+        }
+    }
+
     Column(
-        modifier = modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally, // Cross-axis centering
-        verticalArrangement = Arrangement.Center
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         TextField(
             value = search,
             onValueChange = { search = it },
             singleLine = true,
-            modifier = Modifier
-                .width(200.dp)
-                .height(50.dp),
-            placeholder = { Text("Search") }
+            modifier = Modifier.fillMaxWidth(),
+            placeholder = { Text("Search by name or location") },
         )
-        repeat(7) {
-            Spacer(modifier.height(0.01.dp))
-            Box(
-                modifier = Modifier
-                    .height(50.dp)
-                    .background(Color.LightGray),
-                contentAlignment = Alignment.Center // Centers all children by default
-            ) {
-                Text(text = "Hello Inside Box")
+
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            items(
+                items = filteredRestaurants,
+                key = { it.id },
+            ) { restaurant ->
+                RestaurantCard(restaurant = restaurant)
             }
         }
     }
