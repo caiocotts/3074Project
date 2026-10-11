@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ca.georgebrown.keags.a3074project.screens.SearchScreen
 import ca.georgebrown.keags.a3074project.screens.Edit
+import ca.georgebrown.keags.a3074project.screens.DetailsScreen
 import ca.georgebrown.keags.a3074project.ui.theme._3074ProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             _3074ProjectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchScreen(
+                    DetailsScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
